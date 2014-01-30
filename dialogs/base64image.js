@@ -1,5 +1,5 @@
 /*
- * Created by ALL-INKL.COM - Neue Medien Münnich - 29. Jan 2014
+ * Created by ALL-INKL.COM - Neue Medien Münnich - 30. Jan 2014
  * Licensed under the terms of GPL, LGPL and MPL licenses.
  */
 CKEDITOR.dialog.add("base64imageDialog", function(editor){
@@ -9,6 +9,8 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 		lang = editor.lang.base64image,
 		orgWidth = null, orgHeight = null,
 		imgPreview = null, urlCB = null, urlI = null, fileCB = null, imgScal = 1, lock = true;
+	
+	if(!lang) lang = {};
 	
 	/* Check File Reader Support */
 	function fileSupport() {
