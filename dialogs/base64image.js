@@ -1,16 +1,13 @@
 /*
- * Created by ALL-INKL.COM - Neue Medien MÃ¼nnich - 30. Jan 2014
+ * Created by ALL-INKL.COM - Neue Medien Münnich - 04. Feb 2014
  * Licensed under the terms of GPL, LGPL and MPL licenses.
  */
 CKEDITOR.dialog.add("base64imageDialog", function(editor){
 	
 	var t = null,
 		selectedImg = null,
-		lang = editor.lang.base64image,
 		orgWidth = null, orgHeight = null,
 		imgPreview = null, urlCB = null, urlI = null, fileCB = null, imgScal = 1, lock = true;
-	
-	if(!lang) lang = {};
 	
 	/* Check File Reader Support */
 	function fileSupport() {
@@ -39,7 +36,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 		var i = new Image();
 		
 		/* Display loading text in preview element */
-		imgPreview.getElement().setHtml(lang.loading);
+		imgPreview.getElement().setHtml("Loading...");
 		
 		/* When image is loaded */
 		i.onload = function() {
@@ -112,7 +109,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 			if(n && "files" in n && n.files && n.files.length > 0 && n.files[0]) {
 				if("type" in n.files[0] && !n.files[0].type.match("image.*")) return;
 				if(!FileReader) return;
-				imgPreview.getElement().setHtml(lang.loading);
+				imgPreview.getElement().setHtml("Loading...");
 				var fr = new FileReader();
 				fr.onload = (function(f) { return function(e) {
 					imgPreview.getElement().setHtml("");
@@ -182,7 +179,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 						type: "checkbox",
 						id: "urlcheckbox",
 						style: "margin-top:5px",
-						label: lang.url+":"
+						label: editor.lang.common.url+":"
 					},
 					{
 						type: "text",
@@ -200,7 +197,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 						type: "checkbox",
 						id: "filecheckbox",
 						style: "margin-top:5px",
-						label: lang.file+":"
+						label: editor.lang.common.upload+":"
 					},
 					{
 						type: "file",
@@ -224,7 +221,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 			{
 				type: "text",
 				id: "url",
-				label: lang.url,
+				label: editor.lang.common.url,
 				onChange: function(){ imagePreview("url"); }
 			},
 			{
@@ -237,7 +234,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 	
 	/* Dialog */
     return {
-		title: lang.title,
+		title: editor.lang.common.image,
         minWidth: 450,
         minHeight: 180,
 		onLoad: function(){
@@ -426,17 +423,17 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
         contents: [
             {
                 id: "tab-source",
-                label: lang.tabsource,
+                label: editor.lang.common.generalTab,
                 elements: sourceElements
             },
             {
                 id: "tab-properties",
-                label: lang.tabprop,
+                label: editor.lang.common.advancedTab,
                 elements: [
                     {
                         type: "text",
                         id: "alt",
-                        label: lang.alt
+                        label: editor.lang.image.alt
                     },
                     {
 						type: 'hbox',
@@ -446,18 +443,18 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 								type: "text",
 								width: "45px",
 								id: "width",
-								label: lang.width
+								label: editor.lang.common.width
 							},
 							{
 								type: "text",
 								width: "45px",
 								id: "height",
-								label: lang.height
+								label: editor.lang.common.height
 							},
 							{
 								type: "checkbox",
 								id: "lock",
-								label: lang.lock,
+								label: editor.lang.image.lockRatio,
 								style: "margin-top:18px;"
 							}
 						]
@@ -470,32 +467,32 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 							{
 								type: "select",
 								id: "align",
-								label: lang.align,
+								label: editor.lang.common.align,
 								items: [
-									[lang.alignnone, "none"],
-									[lang.aligntop, "top"],
-									[lang.alignbottom, "bottom"],
-									[lang.alignleft, "left"],
-									[lang.alignright, "right"]
+									[editor.lang.common.notSet, "none"],
+									[editor.lang.common.alignTop, "top"],
+									[editor.lang.common.alignBottom, "bottom"],
+									[editor.lang.common.alignLeft, "left"],
+									[editor.lang.common.alignRight, "right"]
 								]
 							},
 							{
 								type: "text",
 								width: "45px",
 								id: "vmargin",
-								label: lang.vmargin
+								label: editor.lang.image.vSpace
 							},
 							{
 								type: "text",
 								width: "45px",
 								id: "hmargin",
-								label: lang.hmargin
+								label: editor.lang.image.hSpace
 							},
 							{
 								type: "text",
 								width: "45px",
 								id: "border",
-								label: lang.border
+								label: editor.lang.image.border
 							}
 						]
 					}
