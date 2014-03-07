@@ -6,6 +6,11 @@ Created by ALL-INKL.COM - Neue Medien Münnich - 04. Feb 2014
 Adds images from local client as base64 string into the source without server
 side processing. You can also add external image urls into the source.
 
+## Requirements
+
+This plugin requires the language files from the stock image plugin.
+The Browser must support the JavaScript File API.
+
 ## Installation
 
  1. Download the plugin from http://github.com/nmmf/base64image
