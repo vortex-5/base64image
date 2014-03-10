@@ -7,8 +7,6 @@ Adds images from local client as base64 string into the source without server
 side processing. You can also add external image urls into the source.
 
 ## Requirements
-
-This plugin requires the language files from the stock image plugin.
 The Browser must support the JavaScript File API.
 
 ## Installation
