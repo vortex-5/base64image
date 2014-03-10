@@ -433,7 +433,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
                     {
                         type: "text",
                         id: "alt",
-                        label: editor.lang.image.alt
+                        label: editor.lang.base64image.alt
                     },
                     {
 						type: 'hbox',
@@ -454,7 +454,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 							{
 								type: "checkbox",
 								id: "lock",
-								label: editor.lang.image.lockRatio,
+								label: editor.lang.base64image.lockRatio,
 								style: "margin-top:18px;"
 							}
 						]
@@ -480,19 +480,19 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 								type: "text",
 								width: "45px",
 								id: "vmargin",
-								label: editor.lang.image.vSpace
+								label: editor.lang.base64image.vSpace
 							},
 							{
 								type: "text",
 								width: "45px",
 								id: "hmargin",
-								label: editor.lang.image.hSpace
+								label: editor.lang.base64image.hSpace
 							},
 							{
 								type: "text",
 								width: "45px",
 								id: "border",
-								label: editor.lang.image.border
+								label: editor.lang.base64image.border
 							}
 						]
 					}
