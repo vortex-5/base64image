@@ -1,5 +1,5 @@
 /*
- * Created by ALL-INKL.COM - Neue Medien Münnich - 04. Feb 2014
+ * Created by ALL-INKL.COM - Neue Medien Mï¿½nnich - 04. Feb 2014
  * Licensed under the terms of GPL, LGPL and MPL licenses.
  */
 CKEDITOR.dialog.add("base64imageDialog", function(editor){
@@ -55,7 +55,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 				orgWidth = null;
 				orgHeight = null;
 			}
-			this.id = "previewimage";
+			this.id = editor.id+"previewimage";
 			this.setAttribute("style", "max-width:400px;max-height:100px;");
 			this.setAttribute("alt", "");
 			
@@ -347,7 +347,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 			
 			/* Get image source */
 			var src = "";
-			try { src = CKEDITOR.document.getById("previewimage").$.src; } catch(e) { src = ""; }
+			try { src = CKEDITOR.document.getById(editor.id+"previewimage").$.src; } catch(e) { src = ""; }
 			if(typeof(src) != "string" || src == null || src === "") return;
 			
 			/* selected image or new image */
