@@ -1,6 +1,6 @@
 /*
  * Base64Image Plugin for CKEditor (http://github.com/nmmf/base64image)
- * Created by ALL-INKL.COM - Neue Medien Münnich - 04. Feb 2014
+ * Created by ALL-INKL.COM - Neue Medien Mï¿½nnich - 04. Feb 2014
  * Licensed under the terms of GPL, LGPL and MPL licenses.
  */
 CKEDITOR.plugins.add("base64image", {
@@ -9,16 +9,29 @@ CKEDITOR.plugins.add("base64image", {
 	icons	:	"base64image",
 	hidpi	:	true,
     init	: 	function(editor){
-					editor.addCommand("base64imageDialog", new CKEDITOR.dialogCommand("base64imageDialog"));
+					var pluginName = 'base64imageDialog';
+					
 					editor.ui.addButton("base64image", {
 						label: editor.lang.common.image,
-						command: "base64imageDialog",
+						command: pluginName,
 						toolbar: "insert"
 					});
-					CKEDITOR.dialog.add("base64imageDialog", this.path+"dialogs/base64image.js");
+					CKEDITOR.dialog.add(pluginName, this.path+"dialogs/base64image.js");
+					
+					var allowed = 'img[alt,!src]{border-style,border-width,float,height,margin,margin-bottom,margin-left,margin-right,margin-top,width}',
+						required = 'img[alt,src]';
+					
+					editor.addCommand( pluginName, new CKEDITOR.dialogCommand( pluginName, {
+						allowedContent: allowed,
+						requiredContent: required,
+						contentTransformations: [
+							[ 'img{width}: sizeToStyle', 'img[width]: sizeToAttribute' ],
+							[ 'img{float}: alignmentToStyle', 'img[align]: alignmentToAttribute' ]
+						]
+					} ) );
 					editor.on("doubleclick", function(evt){
 						if(evt.data.element && !evt.data.element.isReadOnly() && evt.data.element.getName() === "img") {
-							evt.data.dialog = "base64imageDialog";
+							evt.data.dialog = pluginName;
 							editor.getSelection().selectElement(evt.data.element);
 						}
 					});
@@ -27,7 +40,7 @@ CKEDITOR.plugins.add("base64image", {
 						editor.addMenuItem("base64imageItem", {
 							label: editor.lang.common.image,
 							icon: this.path+"icons/base64image.png",
-							command: "base64imageDialog",
+							command: pluginName,
 							group: "base64imageGroup"
 						});
 					}
