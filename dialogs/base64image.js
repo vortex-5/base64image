@@ -452,17 +452,22 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 								label: editor.lang.common.height
 							},
 							{
-								type: "checkbox",
-								id: "lock",
-								label: editor.lang.base64image.lockRatio,
-								style: "margin-top:18px;"
+								type: 'vbox',
+								style: 'margin-top:18px;',
+								children: [
+									{
+										type: "checkbox",
+										id: "lock",
+										label: editor.lang.base64image.lockRatio
+									}
+								]
 							}
 						]
                     },
 					{
 						type: 'hbox',
 						widths: ["23%", "30%", "30%", "17%"],
-						style: "",
+						style: "margin-top:10px;",
 						children: [
 							{
 								type: "select",
