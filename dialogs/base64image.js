@@ -462,7 +462,7 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 					{
 						type: 'hbox',
 						widths: ["23%", "30%", "30%", "17%"],
-						style: "margin-top:10px;",
+						style: "",
 						children: [
 							{
 								type: "select",
