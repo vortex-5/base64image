@@ -273,6 +273,9 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 		},
 		onShow: function(){
 
+			if (urlI) urlI.getElement().show();
+		  	if (urlCB) urlCB.getElement().show();
+		  	if (fileCB) fileCB.getElement().show();
 			/* Remove preview */
 			imgPreview.getElement().setHtml("");
 
@@ -282,6 +285,13 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 			selectedImg = editor.getSelection();
 			if(selectedImg) selectedImg = selectedImg.getSelectedElement();
 			if(!selectedImg || selectedImg.getName() !== "img") selectedImg = null;
+
+			var fileBrowse = this.getContentElement("tab-source", "file");
+			if (selectedImg) {
+			  if(fileBrowse) fileBrowse.disable();
+			} else {
+			  if(fileBrowse) fileBrowse.enable();
+			}
 
 			/* Set input values */
 			t.setValueOf("tab-properties", "lock", lock);
@@ -342,6 +352,17 @@ CKEDITOR.dialog.add("base64imageDialog", function(editor){
 				t.selectPage("tab-properties");
 			}
 
+			var _this = this;
+			setTimeout(function() {
+			  if (urlI) urlI.getElement().hide();
+			  if (urlCB) urlCB.getElement().hide();
+			  if (fileCB) fileCB.getElement().hide();
+
+			  _this.getContentElement('tab-properties', 'align').getElement().hide();
+			  _this.getContentElement('tab-properties', 'vmargin').getElement().hide();
+			  _this.getContentElement('tab-properties', 'hmargin').getElement().hide();
+			  _this.getContentElement('tab-properties', 'border').getElement().hide();
+			}, 0);
 		},
 		onOk : function(){
 
